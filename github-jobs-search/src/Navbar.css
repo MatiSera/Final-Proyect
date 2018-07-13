@@ -3,7 +3,8 @@
   font-weight: bold;
 }
 .brand {
-  padding: 12px;
+  margin: 0 130px 0 130px;
+  padding: 12px 12px 0 0;
   text-align: left;
 }
 .navbar {

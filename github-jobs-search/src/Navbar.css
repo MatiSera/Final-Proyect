@@ -1,0 +1,13 @@
+/* Navbar Styles */
+.bold {
+  font-weight: bold;
+}
+.brand {
+  padding: 12px;
+  text-align: left;
+}
+.navbar {
+  height: 50px;
+  background: #2B7FC3;
+  border-top: 4px solid #1D5C8F;
+}

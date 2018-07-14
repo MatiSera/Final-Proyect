@@ -1,0 +1,28 @@
+.results-container,
+.favs-container {
+  padding: 20px;
+  border: 1px solid black;
+  max-height: 100px;
+  max-height: 220px;
+  overflow: auto;
+}
+.individual {
+  margin-bottom: 8px;
+  padding: 5px;
+  border: 1px solid black;
+  height: 55px;
+}
+.job-title {
+  float: left;
+  text-align: left
+}
+.locate {
+  float: right;
+  text-align: right;
+}
+.info {
+  float: left;
+}
+.nofav {
+  float: right;
+}

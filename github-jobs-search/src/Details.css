@@ -1,0 +1,16 @@
+.container-header {
+  text-align: left;
+}
+.jobs-container {
+  border: 1px solid black;
+  padding: 10px;
+}
+.details-path {
+  text-align: left;
+}
+.details-title {
+  text-align: left;
+}
+.info {
+  text-align: justify;
+}

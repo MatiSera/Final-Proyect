@@ -23,7 +23,8 @@ body {
   text-align: center;
   margin-top: 5px;
 }
-.grid-search {
+.grid-search,
+.grid-details {
   display: grid;
   grid-column-gap: 50px;
   grid-template-columns: auto;

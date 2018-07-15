@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Results extends Component {
   render() {
     return (
-      <div className="results-container">
+      <section className="results-container">
         <div className="individual">
           <div className="ind-header grid-container">
             <a href="#" className="job-title">Job Title</a>
@@ -14,7 +14,7 @@ class Results extends Component {
             <span class="icon-heart nofav"></span>
           </div>
         </div>
-      </div>
+      </section>
     )
   }
 }

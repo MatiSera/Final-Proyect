@@ -20,7 +20,6 @@ const ChangeUrl = (params) => {
 const Request = (method,params) => {
   let url = ChangeUrl(params)
   let promise = new Promise((resolve,reject) => {
-      Axios.get(url)
       xhr.open(method,url,true);
       xhr.send();
       xhr.onload = () => {

@@ -1,5 +1,4 @@
 //Import React
-
 import React, { Component } from 'react';
 
 //Import Components
@@ -18,6 +17,9 @@ import './Details.css';
 
 // Icons CSS
 import './css/fontello.css'
+
+//import Api
+import JobsApi from './lib/JobsApi';
 
 class App extends Component {
   render() {

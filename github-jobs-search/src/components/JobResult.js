@@ -12,11 +12,11 @@ export default class JobResult extends Component {
         this.setState( prevState => {
             isFavorite: !prevState.isFavorite
         });
-        this.props.handleFav;
+        this.props.handleFav();
     }
 
     render() {
-        <li>
+        <li className="individual">
             <div className="ind-header grid-container">
                 <a href={this.props.job.url} > {this.props.job.tittle} </a>
                 <span className="locate">{this.props.job.location}</span>

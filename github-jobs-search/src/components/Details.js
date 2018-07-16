@@ -23,7 +23,7 @@ class Details extends Component {
               <span className="company bold">
                 Company
               </span>
-              <img src="" className="company-img" />
+              <img src="" className="company-img" alt="company name" />
               <a href="#" >Company Url </a>
             </div>
           </div>

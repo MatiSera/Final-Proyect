@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 //Import Api
 import JobsApi from '../lib/JobsApi.js';
+import Results from './Results.js';
 
 class Search extends Component {
   constructor(props) {
@@ -26,14 +27,14 @@ class Search extends Component {
     let AuxSearch = {
       location : this.state.location || null,
       description : this.state.description || null,
-    } 
+    }
     JobsApi('GET', AuxSearch)
       .then((results) => {
         console.log(results);
       })
       .catch((reason) => {
         console.error(reason);
-      });
+      });      
     e.preventDefault();
   }
   

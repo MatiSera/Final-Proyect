@@ -1,7 +1,7 @@
 const xhr = new XMLHttpRequest();
 
 const ChangeUrl = (params) => {
-  let AddUrl = 'https://jobs.github.com/positions.json?callback=Request';
+  let AddUrl = 'https://crossorigin.me/https://jobs.github.com/positions.json?';
   if (params.location && params.description) {
     AddUrl += 'description=' + params.description;
     AddUrl += 'location=' + params.location;

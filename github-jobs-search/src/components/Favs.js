@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+
+
 class Favs extends Component {
   render() {
     return(

@@ -20,6 +20,21 @@ import './Details.css';
 import './css/fontello.css'
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.handleFav = this.handleFav.bind(this);
+    this.state ={
+      results: [],
+      favorites: []
+    }
+  }
+
+  handleFav = (newFav) => {
+    this.setState( prevState => {
+      favorites: [...prevState.movies, newFav]
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -30,7 +45,7 @@ class App extends Component {
           </div>
           <div className="grid-container">
               <div className="grid-item">
-                < Results />
+                < Results handleFav = {this.handleFav} />
               </div>
               <div className="grid-item">
                 < Favs />

@@ -11,12 +11,12 @@ class JobResult extends Component {
 
     handleClick = (e) => {
         if (e.target.name == "job_tittle") {
-            
+            this.props.handleDetails(this.props.job.id);
         } else {
+            this.props.handleFav(this.props.job, this.state.isFavorite);
             this.setState(prevState => {
                 isFavorite: !prevState.isFavorite
             });
-            this.props.handleFav();
         }
     }
 
@@ -24,7 +24,7 @@ class JobResult extends Component {
         <li className="individual">
             <div className="ind-header grid-container">
                 <a
-                    href=".job-details"
+                    href="#job-details"
                     name="job_tittle"
                     onClick={this.handleClick}
                 >
@@ -38,13 +38,12 @@ class JobResult extends Component {
                     {!isFavorite ? (
                         <i class="fa fa-heart-o"></i> //MUST BE ADDED TO INDEX https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
                     ) : (
-                            <i class="fa fa-heart"></i>
+                        <i class="fa fa-heart"></i>
                         )
                     }
                 </span>
             </div>
         </li>
-
     }
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import JobResult from ',/JobResult';
+import JobResult from './JobResult';
 
 class Results extends Component {
   render() {
@@ -8,6 +8,7 @@ class Results extends Component {
         key = {job.id}
         job = {job}
         handleFav = {this.props.handleFav}
+        handleDetails = {this.props.handleDetails}
       />
     };
   

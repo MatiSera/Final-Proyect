@@ -3,11 +3,15 @@
 import React, { Component } from 'react';
 
 //Import Components
-import Navbar from './components/Navbar'; 
+import Navbar from './components/Navbar';
 import Search from './components/Search';
 import Results from './components/Results';
 import Favs from './components/Favs';
 import Details from './components/Details';
+
+//Import JobAPI call
+
+import Request from './lib/Request';
 
 //Import CSS
 import './App.css';
@@ -20,18 +24,35 @@ import './Details.css';
 import './css/fontello.css'
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleFav = this.handleFav.bind(this);
-    this.state ={
+    this.handleDetails = this.handleDetails.bind(this);
+    this.state = {
       results: [],
-      favorites: []
+      favorites: [],
+      details: {}
     }
   }
 
-  handleFav = (newFav) => {
-    this.setState( prevState => {
-      favorites: [...prevState.movies, newFav]
+  handleFav = (job, isFavorite) => {
+    if (!isFavorite) {
+      this.setState(prevState => {
+        favorites: [...prevState.favorites, job]
+      });
+    } else {
+      this.setState({
+        favorites: this.state.favorites.filter( (j) => 
+          {return j !== job}
+        )  
+      });
+    }
+  }
+
+  handleDetails = (id) => {
+    const url = "https://crossorigin.me/https://jobs.github.com/positions/" + id + ".json";
+    this.setState(prevState => {
+      details: Request(url)
     });
   }
 
@@ -44,20 +65,20 @@ class App extends Component {
             < Search />
           </div>
           <div className="grid-container">
-              <div className="grid-item">
-                < Results handleFav = {this.handleFav} />
-              </div>
-              <div className="grid-item">
-                < Favs />
-              </div>
+            <div className="grid-item">
+              < Results handleFav={this.handleFav} handleDetails={this.handleDetails} />
+            </div>
+            <div className="grid-item">
+              < Favs />
+            </div>
           </div>
           <div className="grid-details">
-          <div className="container-header">
-            <h1 className="title bold">
-            Jobs Details
-            </h1>
-          </div>
-            < Details />
+            <div className="container-header">
+              <h1 className="title bold">
+                Jobs Details
+                </h1>
+            </div>
+            < Details details={this.state.details} />
           </div>
         </div>
       </div>

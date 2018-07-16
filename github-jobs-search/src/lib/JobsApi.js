@@ -1,7 +1,3 @@
-//Import Axios for Api call
-import Axios from 'axios';
-
-
 const xhr = new XMLHttpRequest();
 
 const ChangeUrl = (params) => {

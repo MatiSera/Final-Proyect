@@ -21,7 +21,7 @@ class Search extends Component {
       [name]: value
     });
   }
-  //Si no encuentra en la búsqueda location o description manda null.
+  
   handleSubmit(e) {
     let AuxSearch = {
       location : this.state.location || null,

@@ -9,7 +9,7 @@ class JobResult extends Component {
         }
     }
 
-    handleClick = (e) => {
+    handleClick = (e) => { // this method handle both events. When a job is faved the state in this component is updated.
         if (e.target.name == "job_tittle") {
             this.props.handleDetails(this.props.job.id);
         } else {

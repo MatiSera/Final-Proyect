@@ -36,20 +36,18 @@ class App extends Component {
   }
 
   handleFav = (job, isFavorite) => {
-    if (!isFavorite) {
+    if (!isFavorite) { // if state in JobResult component indicates that job is favorite, favorite app state is updated with the Job,
       this.setState(prevState => {
         favorites: [...prevState.favorites, job]
       });
-    } else {
+    } else { // In other case, the job is deleted from favorite array in app state.
       this.setState({
-        favorites: this.state.favorites.filter( (j) => 
-          {return j !== job}
-        )  
+        favorites: this.state.favorites.filter( (j) => {return j !== job} )  
       });
     }
   }
 
-  handleDetails = (id) => {
+  handleDetails = (id) => { //Recieve the id from the JobResult component, create the url to do the request to the details api and update the details in app state  
     const url = "https://crossorigin.me/https://jobs.github.com/positions/" + id + ".json";
     this.setState(prevState => {
       details: Request(url)

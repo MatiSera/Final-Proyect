@@ -42,43 +42,53 @@ class Search extends Component {
   
   render() {
     return(
-      <div className="search-container">
+      <div className="col-lg-12">
         <div className="header">
           <h1 className="title bold">
             Find your job!
           </h1>
         </div>
-        <div className="search-fields">
+        <div className="row">
           <form className="search-form" onSubmit={this.handleSubmit}>
-            <div className="location">
-              <input
-                className="input position" 
-                type="search" 
-                name="location" 
-                placeholder="Location" 
-                onChange={this.handleInputChange}
-              />
-            </div>
-            <div className="description">
-              <input 
-                className="input position" 
-                type="search" 
-                name="description" 
-                placeholder="Jobs description" 
-                onChange={this.handleInputChange}
-              />
-            </div>
-            <div className="check input position">
-              <label>
-                <input 
-                  type="checkbox" 
-                  name="fulltime" 
-                />
-                Full time?
-              </label>
-            </div>
-            <div className="input position">
-              <button className="search-button " type="submit">Search</button>
+            <div className="col-lg-12 col-xs-12">
+              <div className="location col-lg-2  col-xs-12">
+                <div>
+                  <input
+                    className="input position" 
+                    type="search" 
+                    name="location" 
+                    placeholder="Location" 
+                    onChange={this.handleInputChange}
+                  />
+                </div>
+              </div>
+              <div className="description col-lg-2  col-xs-12">
+                <div>
+                  <input 
+                    className="input position" 
+                    type="search" 
+                    name="description" 
+                    placeholder="Jobs description" 
+                    onChange={this.handleInputChange}
+                  />
+                </div>
+              </div>
+              <div className="check col-lg-2  col-xs-6">
+                <div>
+                  <label>
+                    <input 
+                      type="checkbox" 
+                      name="fulltime" 
+                    />
+                    Full time?
+                  </label>
+                </div>
+              </div>
+              <div className=" col-lg-2 col-xs-6">
+                <div>
+                  <button className="search-button " type="submit">Search</button>
+                </div>
+              </div>
             </div>
           </form>
         </div>

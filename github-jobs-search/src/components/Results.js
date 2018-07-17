@@ -13,12 +13,12 @@ class Results extends Component {
       return (
         <div className="results">
           <div className="individual">
-            <div className="ind-header grid-container">
+            <div className="ind-header col-lg-12">
               <a href="" className="job-title">{jobs.title}</a>
               <span className="locate">{jobs.location}</span>
             </div>
-            <div className="ind-footer">
-              <span className="info">{jobs.company} - {jobs.type}</span>
+            <div className="ind-footer col-lg-12">
+              <span className="info">{jobs.company}</span>
               <span class="icon-heart-empty nofav"></span>
             </div>
           </div>

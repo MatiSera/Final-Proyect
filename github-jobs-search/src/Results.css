@@ -2,20 +2,23 @@
 .favs-container {
   padding: 20px;
   border: 1px solid black;
-  max-height: 100px;
   max-height: 220px;
   overflow: auto;
-  max-width: 80%;
 }
 .individual {
   margin-bottom: 8px;
   padding: 5px;
   border: 1px solid black;
-  height: 55px;
+  height: 80px;
 }
 .job-title {
   float: left;
-  text-align: left
+  text-align: left;
+  font-weight: bolder;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 .locate {
   float: right;
@@ -27,3 +30,22 @@
 .nofav {
   float: right;
 }
+
+
+/*=============================================
+=     Media querys - Results component        =
+=============================================*/
+@media (max-width:767px) {
+  .individual {
+    font-size: 12px;
+  }
+  .locate {
+    float: left;
+    text-align: left;
+  }
+}
+
+
+/*===    Media querys - Results component=*/
+
+   

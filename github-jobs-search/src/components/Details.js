@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Details extends Component {
   render() {
     return(
-      <div className="jobs-container">
+      <div className="jobs-container col-xs-12">
         <div className="job-details">
           <div className="details-path">
             <p className="path-search">
@@ -23,8 +23,12 @@ class Details extends Component {
               <span className="company bold">
                 Company
               </span>
-              <img src="" className="company-img" alt="company name" />
-              <a href="#" >Company Url </a>
+              <div className="img-container col-xs-12">
+                <img src="https://www.loottis.com/wp-content/uploads/2014/10/default-img.gif" className="company-img" alt="company name" />
+              </div>
+              <div className="company-url">
+                <a href="#" >Company Url </a>
+              </div>
             </div>
           </div>
         </div>

@@ -14,6 +14,7 @@ import './Navbar.css';
 import './Search.css';
 import './Results.css';
 import './Details.css';
+import './grid-system.css';
 
 // Icons CSS
 import './css/fontello.css'
@@ -38,26 +39,26 @@ class App extends Component {
       <div className="App">
         < Navbar />
         <div className="container">
-          <div className="search-section grid-search">
+          <div className="row">
             < Search
               _Search={this.handleSearch}
             />
           </div>
           <div className="row">
             <div>
-              <div className="col-6">
+              <div className="col-lg-6 col-xs-12">
                 <div className="results-container">
                   < Results 
                     BringResults={this.state.data}          
                   />
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-lg-6 col-xs-12">
                 < Favs />
               </div>
             </div>
           </div>
-          <div className="grid-details">
+          <div className="grid-details col-xs-12">
           <div className="container-header">
             <h1 className="title bold">
             Jobs Details

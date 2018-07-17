@@ -10,13 +10,11 @@ class Results extends Component {
         handleFav = {this.props.handleFav}
         handleDetails = {this.props.handleDetails}
       /> 
-    };
+    });
   
     return (
       <div className="results-container">
-        <ul>
           {jobList}
-        </ul>
       </div>
     );
   }

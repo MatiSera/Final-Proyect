@@ -5,14 +5,14 @@ class JobResult extends Component {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.state = {
-            isFavorite: false;
+            isFavorite: false
         }
     }
 
     handleClick = (e) => { // this method handle both events. When a job is faved the state in this component is updated.
         if (e.target.name == "job_tittle") {
             this.props.handleDetails(this.props.job.id);
-        } else {
+        } else  {
             this.props.handleFav(this.props.job, this.state.isFavorite);
             this.setState(prevState => {
                 isFavorite: !prevState.isFavorite
@@ -21,7 +21,7 @@ class JobResult extends Component {
     }
 
     render() {
-        <li className="individual">
+        <div className="individual"> 
             <div className="ind-header grid-container">
                 <a
                     href="#job-details"
@@ -43,7 +43,7 @@ class JobResult extends Component {
                     }
                 </span>
             </div>
-        </li>
+        </div>
     }
 }
 

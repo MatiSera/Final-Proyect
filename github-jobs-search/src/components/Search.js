@@ -1,15 +1,16 @@
+//Import React
 import React, { Component } from 'react';
 
 //Import Api
 import JobsApi from '../lib/JobsApi.js';
-import Results from './Results.js';
 
 class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
       location : null,
-      description: null
+      description: null,
+      fulltime : null
     }
 
   this.handleInputChange = this.handleInputChange.bind(this);
@@ -27,10 +28,11 @@ class Search extends Component {
     let AuxSearch = {
       location : this.state.location || null,
       description : this.state.description || null,
+      fulltime : this.state.fulltime || null
     }
     JobsApi('GET', AuxSearch)
       .then((results) => {
-        console.log(results);
+        this.props._Search(results);
       })
       .catch((reason) => {
         console.error(reason);

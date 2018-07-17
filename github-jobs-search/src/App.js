@@ -18,25 +18,44 @@ import './Details.css';
 // Icons CSS
 import './css/fontello.css'
 
-//import Api
-import JobsApi from './lib/JobsApi';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data : null
+    }
+    this.handleSearch = this.handleSearch.bind(this);
+    
+  }
+  handleSearch(data) {
+    this.setState({
+      data : data
+    })
+  }
   render() {
     return (
       <div className="App">
         < Navbar />
         <div className="container">
           <div className="search-section grid-search">
-            < Search />
+            < Search
+              _Search={this.handleSearch}
+            />
           </div>
-          <div className="grid-container">
-              <div className="grid-item">
-                < Results />
+          <div className="row">
+            <div>
+              <div className="col-6">
+                <div className="results-container">
+                  < Results 
+                    BringResults={this.state.data}          
+                  />
+                </div>
               </div>
-              <div className="grid-item">
+              <div className="col-6">
                 < Favs />
               </div>
+            </div>
           </div>
           <div className="grid-details">
           <div className="container-header">

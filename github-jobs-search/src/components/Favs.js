@@ -8,7 +8,7 @@ class Favs extends Component {
       <div className="favs-container">
         <div className="individual">
           <div className="ind-header grid-container">
-            <a href="#" className="job-title">Job Title</a>
+            <a href="" className="job-title">Job Title</a>
             <span className="locate">Location</span>
           </div>
           <div className="ind-footer">

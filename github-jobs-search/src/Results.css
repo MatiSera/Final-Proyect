@@ -5,6 +5,7 @@
   max-height: 100px;
   max-height: 220px;
   overflow: auto;
+  max-width: 80%;
 }
 .individual {
   margin-bottom: 8px;

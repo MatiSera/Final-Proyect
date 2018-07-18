@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
 class Details extends Component {
- 
-  render() { //render each element with props recieved from parent. 
-    return (
-      <div className="jobs-container">
+  render() {
+    return(
+      <div className="jobs-container col-xs-12">
         <div className="job-details" id="job-details">
           <div className="details-path">
             <p className="path-search">
@@ -24,8 +23,12 @@ class Details extends Component {
               <span className="company bold">
                 {this.props.details.company}
               </span>
-              <img src={this.props.details.company_logo} className="company-img" />
-              <a href={this.props.details.company_url} >Company Url </a>
+              <div className="img-container col-xs-12">
+               <img src={this.props.details.company_logo} className="company-img" /> 
+              </div>
+              <div className="company-url">
+               <a href={this.props.details.company_url} >Company Url </a> 
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Favorite from './Favorite'
 
+
+
 class Favs extends Component {
   render() {
     const favorites = this.props.favorites.map((favorite) =>

@@ -5,15 +5,17 @@
   width: 100%;
 }
 .input {
-  height: 20px;
-  float: left;
+  height: 25px;
+  border-radius: 3px;
+  border: 1px solid lightslategrey;
+  border-width: thin;
 }
 .position {
   margin-right: 40px;
 }
 .search-button {
   width: 100px;
-  height: 32px;
+  height: 25px;
   color: white;
   background: #869ca9;
   -webkit-border-radius: 3px;

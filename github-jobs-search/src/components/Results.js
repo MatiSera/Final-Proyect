@@ -1,8 +1,24 @@
 //Import React
 import React, { Component } from 'react';
+import JobResult from './JobResult';
 
 
 class Results extends Component {
+//<<<<<<< julian
+  render() {
+    const jobList = this.props.jobs.map((job) => // Create a jobList with parameters to handle fav event and details event
+      <JobResult
+        key = {job.id}
+        job = {job}
+        handleFav = {this.props.handleFav}
+        handleDetails = {this.props.handleDetails}
+      /> 
+    );
+  
+    return (
+      <div className="results-container">
+          {jobList}
+//=======
   constructor(props) {
     super(props);
 
@@ -37,8 +53,9 @@ class Results extends Component {
             </p>
           </div>
         </div>
+//>>>>>>> staging
       </div>
-    )
+    );
   }
 
 

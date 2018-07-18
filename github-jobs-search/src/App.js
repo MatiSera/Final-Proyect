@@ -2,11 +2,15 @@
 import React, { Component } from 'react';
 
 //Import Components
-import Navbar from './components/Navbar'; 
+import Navbar from './components/Navbar';
 import Search from './components/Search';
 import Results from './components/Results';
 import Favs from './components/Favs';
 import Details from './components/Details';
+
+//Import JobAPI call
+
+import Request from './lib/Request';
 
 //Import CSS
 import './App.css';
@@ -23,10 +27,16 @@ import './css/fontello.css'
 class App extends Component {
   constructor(props) {
     super(props);
+
+    this.handleFav = this.handleFav.bind(this);
+    this.handleDetails = this.handleDetails.bind(this);
     this.state = {
+      results: [],
+      favorites: JSON.parse(localStorage.get('Favorites')),
+      details: {},
       data : null
     }
-    this.handleSearch = this.handleSearch.bind(this);
+  this.handleSearch = this.handleSearch.bind(this);
     
   }
   handleSearch(data) {
@@ -34,6 +44,32 @@ class App extends Component {
       data : data
     })
   }
+
+  handleFav = (job, isFavorite) => {
+    if (!isFavorite) { // if state in JobResult component indicates that job is favorite, favorite app state is updated with the Job,
+      this.setState(prevState => {
+        favorites: [...prevState.favorites, job]
+      });
+    } else { // In other case, the job is deleted from favorite array in app state.
+      this.setState({
+        favorites: this.state.favorites.filter( (j) => {return j !== job} )  
+      });
+    }
+    serializedFavs = JSON.stringify(this.state.favorites);
+    localStorage.set('Favorites', serializedFavs);
+  }
+
+  handleDetails = (id) => { //Recieve the id from the JobResult component, create the url to do the request to the details api and update the details in app state  
+    const url = "https://crossorigin.me/https://jobs.github.com/positions/" + id + ".json";
+    this.setState(prevState => {
+      details: Request(url)
+    });
+  }
+
+
+  
+    
+
   render() {
     return (
       <div className="App">
@@ -49,12 +85,16 @@ class App extends Component {
               <div className="col-lg-6 col-xs-12">
                 <div className="results-container">
                   < Results 
-                    BringResults={this.state.data}          
+                    BringResults={this.state.data}
+                    handleFav={this.handleFav} 
+                    handleDetails={this.handleDetails}
                   />
                 </div>
               </div>
               <div className="col-lg-6 col-xs-12">
-                < Favs />
+                < Favs 
+                  favorites = {this.state.favorites}
+                />
               </div>
             </div>
           </div>
@@ -64,7 +104,9 @@ class App extends Component {
             Jobs Details
             </h1>
           </div>
-            < Details />
+            < Details 
+              details={this.state.details}
+            />
           </div>
         </div>
       </div>

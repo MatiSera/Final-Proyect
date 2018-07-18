@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
+import Favorite from './Favorite'
 
 
 
 class Favs extends Component {
   render() {
+    const favorites = this.props.favorites.map((favorite) =>
+      <Favorite favorite = {favorite} />
+    );
+
     return(
+     // <h2> My Favs ({favorites.length}) </h2> faltaría agregar algo como esto 
       <div className="favs-container">
-        <div className="individual">
-          <div className="ind-header grid-container">
-            <a href="" className="job-title">Job Title</a>
-            <span className="locate">Location</span>
-          </div>
-          <div className="ind-footer">
-            <span className="info">Company - FullTime</span>
-            <span class="icon-heart nofav"></span>
-          </div>
-        </div>
+        {favorites}
       </div>
-    )
+    );
   }
 }
 

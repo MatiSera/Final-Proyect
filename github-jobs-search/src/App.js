@@ -30,7 +30,7 @@ class App extends Component {
     this.handleDetails = this.handleDetails.bind(this);
     this.state = {
       results: [],
-      favorites: localStorage.get('Favorites'),
+      favorites: JSON.parse(localStorage.get('Favorites')),
       details: {} // AD!!!!!!!!!
     }
   }

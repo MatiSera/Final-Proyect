@@ -30,8 +30,8 @@ class App extends Component {
     this.handleDetails = this.handleDetails.bind(this);
     this.state = {
       results: [],
-      favorites: [],
-      details: {}
+      favorites: localStorage.get('Favorites'),
+      details: {} // AD!!!!!!!!!
     }
   }
 
@@ -45,6 +45,8 @@ class App extends Component {
         favorites: this.state.favorites.filter( (j) => {return j !== job} )  
       });
     }
+    serializedFavs = JSON.stringify(this.state.favorites);
+    localStorage.set('Favorites', serializedFavs);
   }
 
   handleDetails = (id) => { //Recieve the id from the JobResult component, create the url to do the request to the details api and update the details in app state  
@@ -67,7 +69,7 @@ class App extends Component {
               < Results handleFav={this.handleFav} handleDetails={this.handleDetails} />
             </div>
             <div className="grid-item">
-              < Favs />
+              < Favs favorites = {this.state.favorites} />
             </div>
           </div>
           <div className="grid-details">

@@ -12,13 +12,19 @@ export default class Favorite extends Component {
         const { favorite } = this.props
         return (
             <div className="individual">
-                <div className="ind-header grid-container">
-                    <a href="#" className="job-title"> {favorite.title} </a>
-                    <span className="locate"> {favorite.location} </span>
+                <div className="ind-header col-lg-12">
+                    <a className="job-title"> 
+                        {favorite.title} 
+                    </a>
+                    <span className="locate"> 
+                        {favorite.location} 
+                    </span>
                 </div>
-                <div className="ind-footer">
+                <div className="ind-footer col-lg-12">
                     <span className="info"> {favorite.company + "-" + favorite.type}</span>
-                    <span class="icon-heart nofav" 
+                    <span 
+                        title="Delete from favorites"
+                        class="icon-heart no-fav" 
                         onClick={() => this.handleDelete(favorite)} 
                     >
                     </span>

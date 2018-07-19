@@ -30,9 +30,9 @@ class Favs extends Component {
 
   handleDefault() {
     return (
-      <div className="jobs-container">
+      <div className="favs-container">
         <div className="job-details" id="job-details">
-          Sin favoritos
+          You don´t have favorites
         </div>
       </div>
     );

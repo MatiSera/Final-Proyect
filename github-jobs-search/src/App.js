@@ -51,7 +51,7 @@ class App extends Component {
           let cont = 0 
           favs.forEach((e) => {
             if (e.id === job.id) {
-               alert('Ya es un favorito!')
+              alert('Ya es un favorito!')
             } else if ( cont === 0 ) {
               cont = 1
               favs.push(job);
@@ -113,11 +113,11 @@ class App extends Component {
             </div>
           </div>
           <div className="grid-details col-xs-12">
-          <div className="container-header">
+          {/* <div className="container-header">
             <h1 className="title bold">
             Jobs Details
             </h1>
-          </div>
+          </div> */}
             < Details 
               Details={this.state.details}
             />

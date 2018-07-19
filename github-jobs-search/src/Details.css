@@ -13,9 +13,11 @@
 }
 .info {
   text-align: justify;
+  overflow: auto;
+  max-height: 310px;
 }
 .company-img {
-  width: 100%;
+  width: 50%;
 }
 
 

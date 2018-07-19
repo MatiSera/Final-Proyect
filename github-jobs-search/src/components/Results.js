@@ -25,18 +25,19 @@ class Results extends Component {
                 name="job_tittle"
                 onClick={(e) => this.handleClick(jobs, e)}
               >
-                <i class="fa fa-info-circle"></i> {jobs.title} 
+                <i className="fa fa-info-circle"></i> {jobs.title} 
               </a>
               <span className="locate">{jobs.location}</span>
             </div>
             <div className="ind-footer col-lg-12">
               <span className="info">{jobs.company}</span>
               <span 
-                class="icon-heart-empty" 
+                className="icon-heart-empty no-fav"
+                title="Add to favorites" 
                 onClick={(e) => this.handleClickFavs(jobs, e)} 
               >
 
-                </span>
+              </span>
             </div>
           </div>
         </div>
@@ -58,7 +59,7 @@ class Results extends Component {
   handleDefault() {
     return (
       <div className="results">
-        <div className="individual">
+        <div>
           <div className="ind-header">
             <p className="need-search">
               Do a search to have results, please...

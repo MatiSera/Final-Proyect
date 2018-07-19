@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
 
 export default class Favorite extends Component {
-
-
+    constructor(props){
+        super(props)
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+    handleDelete(jobs) {
+        this.props._delFavs(jobs)
+    }
     render() {
+        const { favorite } = this.props
         return (
             <div className="individual">
                 <div className="ind-header grid-container">
-                    <a href="#" className="job-title"> {this.props.favorites.tittle} </a>
-                    <span className="locate"> {this.props.favorites.location} </span>
+                    <a href="#" className="job-title"> {favorite.title} </a>
+                    <span className="locate"> {favorite.location} </span>
                 </div>
                 <div className="ind-footer">
-                    <span className="info"> {this.props.favorites.company + "-" + this.props.favorites.type}</span>
-                    <span class="icon-heart nofav"></span>
+                    <span className="info"> {favorite.company + "-" + favorite.type}</span>
+                    <span class="icon-heart nofav" 
+                        onClick={() => this.handleDelete(favorite)} 
+                    >
+                    </span>
                 </div>
             </div>
         );

@@ -1,26 +1,15 @@
 //Import React
 import React, { Component } from 'react';
-import JobResult from './JobResult';
 
 
 class Results extends Component {
-//<<<<<<< julian
-  render() {
-    const jobList = this.props.jobs.map((job) => // Create a jobList with parameters to handle fav event and details event
-      <JobResult
-        key = {job.id}
-        job = {job}
-        handleFav = {this.props.handleFav}
-        handleDetails = {this.props.handleDetails}
-      /> 
-    );
-  
-    return (
-      <div className="results-container">
-          {jobList}
-//=======
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleClickFavs = this.handleClickFavs.bind(this);
+    this.state = {
+        isFavorite: false
+    }
 
   }
 
@@ -30,18 +19,41 @@ class Results extends Component {
         <div className="results">
           <div className="individual">
             <div className="ind-header col-lg-12">
-              <a href="" className="job-title">{jobs.title}</a>
+              <a 
+                href="#job-details" 
+                className="job-title"
+                name="job_tittle"
+                onClick={(e) => this.handleClick(jobs, e)}
+              >
+                <i class="fa fa-info-circle"></i> {jobs.title} 
+              </a>
               <span className="locate">{jobs.location}</span>
             </div>
             <div className="ind-footer col-lg-12">
               <span className="info">{jobs.company}</span>
-              <span class="icon-heart-empty nofav"></span>
+              <span 
+                class="icon-heart-empty" 
+                onClick={(e) => this.handleClickFavs(jobs, e)} 
+              >
+
+                </span>
             </div>
           </div>
         </div>
       )
     })
   }
+  handleClickFavs (job, e) {
+    this.props.handleFav(job, this.state.isFavorite);
+    this.setState(prevState => {
+        isFavorite: !prevState.isFavorite
+    });
+  }
+  handleClick = (job, e) => { 
+    if (e.target.name === "job_tittle") {
+        this.props.handleDetails(job);
+    }
+}
 
   handleDefault() {
     return (
@@ -53,7 +65,6 @@ class Results extends Component {
             </p>
           </div>
         </div>
-//>>>>>>> staging
       </div>
     );
   }

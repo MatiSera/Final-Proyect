@@ -10,7 +10,6 @@ import Details from './components/Details';
 
 //Import JobAPI call
 
-import Request from './lib/Request';
 
 //Import CSS
 import './App.css';
@@ -27,17 +26,16 @@ import './css/fontello.css'
 class App extends Component {
   constructor(props) {
     super(props);
-
-    this.handleFav = this.handleFav.bind(this);
-    this.handleDetails = this.handleDetails.bind(this);
     this.state = {
       results: [],
-      favorites: JSON.parse(localStorage.get('Favorites')),
-      details: {},
+      favorites: null,
+      details: null,
       data : null
     }
-  this.handleSearch = this.handleSearch.bind(this);
-    
+    this.handleFav = this.handleFav.bind(this);
+    this.handleDetails = this.handleDetails.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this._delFavs = this._delFavs.bind(this);
   }
   handleSearch(data) {
     this.setState({
@@ -46,30 +44,45 @@ class App extends Component {
   }
 
   handleFav = (job, isFavorite) => {
-    if (!isFavorite) { // if state in JobResult component indicates that job is favorite, favorite app state is updated with the Job,
-      this.setState(prevState => {
-        favorites: [...prevState.favorites, job]
-      });
-    } else { // In other case, the job is deleted from favorite array in app state.
+    if (!isFavorite) {
+      let favs = this.state.favorites ? this.state.favorites : []; 
+      if (this.state.favorites || Array.isArray(favs)){
+        if (favs.length > 0) {
+          let cont = 0 
+          favs.forEach((e) => {
+            if (e.id === job.id) {
+               alert('Ya es un favorito!')
+            } else if ( cont === 0 ) {
+              cont = 1
+              favs.push(job);
+            } 
+          });
+        } else {
+          favs.push(job);
+        }
+      }
       this.setState({
-        favorites: this.state.favorites.filter( (j) => {return j !== job} )  
+        favorites: favs
       });
     }
-    serializedFavs = JSON.stringify(this.state.favorites);
-    localStorage.set('Favorites', serializedFavs);
   }
 
-  handleDetails = (id) => { //Recieve the id from the JobResult component, create the url to do the request to the details api and update the details in app state  
-    const url = "https://crossorigin.me/https://jobs.github.com/positions/" + id + ".json";
-    this.setState(prevState => {
-      details: Request(url)
+  handleDetails = (job) => {
+    this.setState({
+      details: job
     });
   }
-
-
-  
-    
-
+  _delFavs(jobs) {
+    let favs = this.state.favorites
+    favs.forEach( (e, i)=>{
+      if(e.id === jobs.id){
+        favs.splice(i, 1);
+      }
+    });
+    this.setState({
+      favorites: favs
+    });
+  }
   render() {
     return (
       <div className="App">
@@ -93,7 +106,8 @@ class App extends Component {
               </div>
               <div className="col-lg-6 col-xs-12">
                 < Favs 
-                  favorites = {this.state.favorites}
+                  favorites={this.state.favorites}
+                  _delFavs={this._delFavs}
                 />
               </div>
             </div>
@@ -105,7 +119,7 @@ class App extends Component {
             </h1>
           </div>
             < Details 
-              details={this.state.details}
+              Details={this.state.details}
             />
           </div>
         </div>

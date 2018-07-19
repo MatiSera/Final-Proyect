@@ -1,20 +1,48 @@
 import React, { Component } from 'react';
-import Favorite from './Favorite'
+import Favorite from './favorite'
 
 
 
 class Favs extends Component {
-  render() {
-    const favorites = this.props.favorites.map((favorite) =>
-      <Favorite favorite = {favorite} />
-    );
-
+  constructor(props){
+    super(props)
+    this._delFavs = this._delFavs.bind(this);
+  }
+  _delFavs(jobs) {
+    this.props._delFavs(jobs)
+  }
+  
+  handleRender (favorites) {
+    const res = favorites.map((favorite) =>{
+      return (
+        <Favorite 
+          favorite={favorite} 
+          _delFavs={this._delFavs}
+        />
+      )
+    });
     return(
-     // <h2> My Favs ({favorites.length}) </h2> faltaría agregar algo como esto 
       <div className="favs-container">
-        {favorites}
+        {res}
       </div>
     );
+  }
+
+  handleDefault() {
+    return (
+      <div className="jobs-container">
+        <div className="job-details" id="job-details">
+          Sin favoritos
+        </div>
+      </div>
+    );
+  }
+  
+  render() {
+    const { favorites } = this.props
+    console.log(favorites)
+    return favorites ? this.handleRender(favorites) : this.handleDefault();
+    
   }
 }
 

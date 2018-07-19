@@ -1,39 +1,63 @@
 import React, { Component } from 'react';
 
 class Details extends Component {
-  render() {
+  constructor (props) {
+    super(props)
+
+  }
+
+
+  handleRenderWithData (Details) {
     return(
       <div className="jobs-container col-xs-12">
         <div className="job-details" id="job-details">
           <div className="details-path">
             <p className="path-search">
-              {this.props.details.type + "-" + this.props.details.location}
+              {Details.type + "-" + Details.location}
             </p>
           </div>
           <div className="details-title">
             <h1 className="title bold">
-              {this.props.details.tittle}
+              {Details.tittle}
             </h1>
           </div>
           <div className="details-info grid-container">
             <p className="info grid-item">
-              {this.props.details.description}
+              {Details.description}
             </p>
             <div className="img-details grid-item">
               <span className="company bold">
-                {this.props.details.company}
+                {Details.company}
               </span>
               <div className="img-container col-xs-12">
-               <img src={this.props.details.company_logo} className="company-img" /> 
+              <img src={Details.company_logo} className="company-img" /> 
               </div>
               <div className="company-url">
-               <a href={this.props.details.company_url} >Company Url </a> 
+              <a href={Details.company_url} > </a> 
               </div>
             </div>
           </div>
         </div>
       </div>
     )
+  }
+
+  handleDefault() {
+    return (
+      <div className="jobs-container col-xs-12">
+        <div className="job-details" id="job-details">
+          Sin detalles
+        </div>
+      </div>
+    );
+  }
+
+
+
+  render() {
+    const { Details } = this.props;
+    return Details ? this.handleRenderWithData(Details) : this.handleDefault();
+    
   }
 }
 

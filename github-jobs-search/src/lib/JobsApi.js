@@ -19,7 +19,6 @@ const Request = (method, data) => {
     fulltime: data.fulltime || null
   };
   let url = '/positions.json' +  formatParams(params)
-  console.log(url)
   let promise = new Promise((resolve, reject) => {
     xhr.open(method, url, true);
     xhr.send();

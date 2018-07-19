@@ -40,7 +40,6 @@ class Favs extends Component {
   
   render() {
     const { favorites } = this.props
-    console.log(favorites)
     return favorites ? this.handleRender(favorites) : this.handleDefault();
     
   }

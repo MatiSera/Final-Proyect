@@ -5,28 +5,8 @@ body {
   background: #fafafa;
 }
 
-.container {
-  margin: 0 130px 0 130px;
-}
-
-/* Grid System */
-
-.grid-container {
-  display: grid;
-  grid-column-gap: 50px;
-  grid-template-columns: auto auto;
-  padding: 10px;
-}
-
-.grid-item {
-  padding: 20px;
-  text-align: center;
-  margin-top: 5px;
-}
-.grid-search,
-.grid-details {
-  display: grid;
-  grid-column-gap: 50px;
-  grid-template-columns: auto;
-  padding: 10px;
-}
+/* .row::after {
+  content: "";
+  clear: both;
+  display: table;
+} */

@@ -1,21 +1,47 @@
 import React, { Component } from 'react';
+import Favorite from './favorite'
+
+
 
 class Favs extends Component {
-  render() {
+  constructor(props){
+    super(props)
+    this._delFavs = this._delFavs.bind(this);
+  }
+  _delFavs(jobs) {
+    this.props._delFavs(jobs)
+  }
+  
+  handleRender (favorites) {
+    const res = favorites.map((favorite) =>{  
+      return (
+        <Favorite 
+          favorite={favorite} 
+          _delFavs={this._delFavs}
+        />
+      )
+    });
     return(
       <div className="favs-container">
-        <div className="individual">
-          <div className="ind-header grid-container">
-            <a href="#" className="job-title">Job Title</a>
-            <span className="locate">Location</span>
-          </div>
-          <div className="ind-footer">
-            <span className="info">Company - FullTime</span>
-            <span class="icon-heart nofav"></span>
-          </div>
+        {res}
+      </div>
+    );
+  }
+
+  handleDefault() {
+    return (
+      <div className="favs-container">
+        <div className="job-details" id="job-details">
+          You don´t have favorites
         </div>
       </div>
-    )
+    );
+  }
+  
+  render() {
+    const { favorites } = this.props
+    return favorites ? this.handleRender(favorites) : this.handleDefault();
+    
   }
 }
 

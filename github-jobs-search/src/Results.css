@@ -1,20 +1,24 @@
 .results-container,
 .favs-container {
   padding: 20px;
-  border: 1px solid black;
-  max-height: 100px;
   max-height: 220px;
   overflow: auto;
+  box-shadow: 0px 0px 20px 2px #888888;
 }
 .individual {
   margin-bottom: 8px;
   padding: 5px;
-  border: 1px solid black;
-  height: 55px;
+  height: 80px;
+  box-shadow: 1px 1px 11px 1px #888888;
 }
 .job-title {
   float: left;
-  text-align: left
+  text-align: left;
+  font-weight: bolder;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 .locate {
   float: right;
@@ -23,6 +27,26 @@
 .info {
   float: left;
 }
-.nofav {
+.no-fav {
   float: right;
+  cursor: pointer;
 }
+
+
+/*=============================================
+=     Media querys - Results component        =
+=============================================*/
+@media (max-width:767px) {
+  .individual {
+    font-size: 12px;
+  }
+  .locate {
+    float: left;
+    text-align: left;
+  }
+}
+
+
+/*===    Media querys - Results component=*/
+
+   

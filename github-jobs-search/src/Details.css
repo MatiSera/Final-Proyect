@@ -13,4 +13,24 @@
 }
 .info {
   text-align: justify;
+  overflow: auto;
+  max-height: 310px;
 }
+.company-img {
+  width: 50%;
+}
+
+
+/*=============================================
+=            Media querys             =
+=============================================*/
+@media (max-width:767px) {
+  .company-img {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+
+/*=====  End of Media querys   ======*/
+

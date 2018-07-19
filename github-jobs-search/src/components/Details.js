@@ -1,35 +1,67 @@
 import React, { Component } from 'react';
 
 class Details extends Component {
-  render() {
+  constructor (props) {
+    super(props)
+
+  }
+
+
+  handleRenderWithData (Details) {
     return(
-      <div className="jobs-container">
-        <div className="job-details">
+      <div className="jobs-container col-xs-12">
+        <div className="container-header">
+            <h1 className="title bold">
+              Jobs Details
+            </h1>
+        </div>
+        <div className="job-details" id="job-details">
           <div className="details-path">
             <p className="path-search">
-            Full Time/ Location
+              {Details.type + "-" + Details.location}
             </p>
+            <span className="company bold">
+              {Details.company}
+            </span>
           </div>
           <div className="details-title">
             <h1 className="title bold">
-              Job title
+              {Details.tittle}
             </h1>
           </div>
-          <div className="details-info grid-container">
-            <p className="info grid-item">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit scelerisque et suscipit nisi mus, accumsan tortor suspendisse metus hendrerit dapibus convallis cum donec vitae dignissim, bibendum justo proin dictum felis interdum sodales cubilia inceptos arcu lobortis. Hendrerit nostra magna mauris torquent faucibus, parturient luctus euismod penatibus rhoncus malesuada, himenaeos etiam nec taciti. Non vehicula senectus mi eget netus mollis fames, metus lacinia suscipit tortor torquent facilisis iaculis aliquet, himenaeos tempus enim class fusce tempor. Elementum inceptos himenaeos tempus nibh egestas placerat pellentesque, aptent purus sodales pretium dapibus turpis blandit montes, posuere magna cras iaculis natoque litora.
-            </p>
-            <div className="img-details grid-item">
-              <span className="company bold">
-                Company
-              </span>
-              <img src="" className="company-img" />
-              <a href="#" >Company Url </a>
+          <div className="details-info col-lg-12">
+            <div className="info col-lg-6">
+            <div dangerouslySetInnerHTML={{ __html: Details.description }} />
+            </div>
+            <div className="img-details col-lg-6">
+              <div className="img-container col-xs-12">
+                <img src={Details.company_logo} className="company-img" width="200" height="200"/> 
+              </div>
+              <div className="company-url">
+                <a target="_blank" href={Details.company_url} > { Details.company_url } </a> 
+              </div>
             </div>
           </div>
         </div>
       </div>
     )
+  }
+
+  handleDefault() {
+    return (
+      <div className=" col-xs-12">
+        <div className="job-details" id="job-details">
+        </div>
+      </div>
+    );
+  }
+
+
+
+  render() {
+    const { Details } = this.props;
+    return Details ? this.handleRenderWithData(Details) : this.handleDefault();
+    
   }
 }
 

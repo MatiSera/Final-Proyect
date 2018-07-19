@@ -10,28 +10,28 @@ class Search extends Component {
     this.state = {
       location : null,
       description: null,
-      fulltime : null
+      type : null
     }
 
   this.handleInputChange = this.handleInputChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
     
   }
-  handleInputChange(e) {
+  
+  handleInputChange(e,name) {
     const target = e.target;
-    const value = target.type;
-    const name = target.name;
+    const value = target.value;
     this.setState({
       [name]: value
     });
+    console.log(e.target.value)
   }
-
   
   handleSubmit(e) {
     let AuxSearch = {
       location : this.state.location || null,
       description : this.state.description || null,
-      fulltime : this.state.type || null
+      type : this.state.type || null
     }
     JobsApi('GET', AuxSearch)
       .then((results) => {
@@ -82,7 +82,7 @@ class Search extends Component {
                     <input 
                       type="checkbox" 
                       name="fulltime"
-                      onChange={this.handleInputChange}
+                      onChange={ e => this.handleInputChange(e, 'fulltime') }
                     />
                     Full time?
                   </label>

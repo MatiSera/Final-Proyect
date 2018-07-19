@@ -18,17 +18,20 @@ class Search extends Component {
     
   }
   handleInputChange(e) {
-    const {value, name} = e.target;
+    const target = e.target;
+    const value = target.type;
+    const name = target.name;
     this.setState({
       [name]: value
     });
   }
+
   
   handleSubmit(e) {
     let AuxSearch = {
       location : this.state.location || null,
       description : this.state.description || null,
-      fulltime : this.state.fulltime || null
+      fulltime : this.state.type || null
     }
     JobsApi('GET', AuxSearch)
       .then((results) => {
@@ -78,7 +81,8 @@ class Search extends Component {
                   <label>
                     <input 
                       type="checkbox" 
-                      name="fulltime" 
+                      name="fulltime"
+                      onChange={this.handleInputChange}
                     />
                     Full time?
                   </label>

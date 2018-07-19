@@ -104,7 +104,7 @@ class App extends Component {
                   />
                 </div>
               </div>
-              <div className="col-lg-6 col-xs-12">
+              <div className="col-lg-6 col-xs-12" id="result">
                 < Favs 
                   favorites={this.state.favorites}
                   _delFavs={this._delFavs}

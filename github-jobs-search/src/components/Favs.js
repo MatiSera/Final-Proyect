@@ -13,7 +13,7 @@ class Favs extends Component {
   }
   
   handleRender (favorites) {
-    const res = favorites.map((favorite) =>{
+    const res = favorites.map((favorite) =>{  
       return (
         <Favorite 
           favorite={favorite} 

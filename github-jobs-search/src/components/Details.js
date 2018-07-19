@@ -8,7 +8,6 @@ class Details extends Component {
 
 
   handleRenderWithData (Details) {
-    console.log(Details.description);
     return(
       <div className="jobs-container col-xs-12">
         <div className="container-header">
@@ -36,10 +35,10 @@ class Details extends Component {
             </div>
             <div className="img-details col-lg-6">
               <div className="img-container col-xs-12">
-              <img src={Details.company_logo} className="company-img" width="200" height="200"/> 
+                <img src={Details.company_logo} className="company-img" width="200" height="200"/> 
               </div>
               <div className="company-url">
-              <a href={Details.company_url} > </a> 
+                <a target="_blank" href={Details.company_url} > { Details.company_url } </a> 
               </div>
             </div>
           </div>
